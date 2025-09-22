@@ -24,42 +24,23 @@ function initializeApp() {
 }
 
 function simulateLoading() {
-   // Loading simulation (3 detik fix, rapi)
+   // versi super cepat (0.5 detik langsung ke main)
 function simulateLoading() {
     const progressFill = document.getElementById('progress-fill');
     const progressText = document.querySelector('.progress-text');
     const loadingText = document.querySelector('.loading-text');
     const loadingScreen = document.getElementById('loading-screen');
-    
-    let progress = 0;
-    const loadingMessages = [
-        '&gt; INITIALIZING..._',
-        '&gt; LOADING MEMORIES..._',
-        '&gt; PREPARING SURPRISE..._',
-        '&gt; ALMOST READY..._',
-        '&gt; LOADING COMPLETE!_'
-    ];
-    
-    let messageIndex = 0;
 
-    // update tiap 100ms → 30x → 1 detik
-    const interval = setInterval(() => {
-        progress += 100 / 10; // naik stabil
-        if (progress > 100) progress = 100;
+    // langsung full bar
+    progressFill.style.width = '100%';
+    progressText.textContent = '100%';
+    loadingText.innerHTML = '&gt; LOADING COMPLETE!_';
 
-        // update progress bar
-        progressFill.style.width = progress + '%';
-        progressText.textContent = Math.floor(progress) + '%';
-
-        // update pesan sesuai progress
-        const newMessageIndex = Math.floor((progress / 100) * (loadingMessages.length - 1));
-        if (newMessageIndex !== messageIndex && newMessageIndex < loadingMessages.length) {
-            messageIndex = newMessageIndex;
-            loadingText.style.opacity = '0';
-            setTimeout(() => {
-                loadingText.innerHTML = loadingMessages[messageIndex];
-                loadingText.style.opacity = '1';
-            }, 200);
+    // kasih efek delay dikit biar ga terlalu mendadak
+    setTimeout(() => {
+        transitionToMainScreen();
+    }, 500); // setengah detik
+}
         }
 
         // selesai
@@ -570,5 +551,6 @@ function initializeMusicPlayer() {
                         allowfullscreen="" 
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                         
+
 
 
