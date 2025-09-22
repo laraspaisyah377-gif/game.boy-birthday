@@ -42,9 +42,9 @@ function simulateLoading() {
     
     let messageIndex = 0;
 
-    // update tiap 100ms → 30x → 3 detik
+    // update tiap 100ms → 30x → 1 detik
     const interval = setInterval(() => {
-        progress += 100 / 30; // naik stabil
+        progress += 100 / 10; // naik stabil
         if (progress > 100) progress = 100;
 
         // update progress bar
@@ -570,4 +570,5 @@ function initializeMusicPlayer() {
                         allowfullscreen="" 
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                         
+
 
